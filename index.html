@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>Quiz Time!</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="animate.css">
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -20,6 +19,18 @@
         <button class="btn">Start</button>
       </div>
       </div>
+    </div>
+    <div id="simple-modal" class="modal-overlay modal-hidden" aria-hidden="true">
+      <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-header">
+          <h2 class="modal-heading">Your Quiz Results</h2>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <p>Thank you for taking this quiz!</p>
+        </div>
+        <a href="#close" class="modal-close" title="Close modal">&times;</a>
+      </div> 
     </div>
   <script src="script.js"></script>
 </body>
