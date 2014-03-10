@@ -159,9 +159,13 @@ label {
 }
 
 .modal-body {
-  padding: 1em 0.25em;
-  font-size: 1.25em;
-  line-height: 1.5em;
+  padding: 0.75em 0.25em 0;
+  font-size: 2.5em;
+  line-height: 1.25;
+}
+
+.modal-score {
+  margin: 0;
 }
 
 .modal-footer {
@@ -315,7 +319,12 @@ label {
 
   .modal-body {
     padding: 0;
-    font-size: 4em;
+    font-size: 3em;
+  }
+
+  .modal-score {
+    font-size: 1.5em;
+    margin: 0.5em 0 0;
   }
 
   .modal-footer {

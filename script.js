@@ -71,7 +71,7 @@ function initializeQuiz() {
 }
 
 function advanceSlide() {
-  currentAnimation < 2 ? currentAnimation : currentAnimation = 0;
+  currentAnimation < 2 ? currentAnimation : currentAnimation = -1;
   currentAnimation++;
   questionCounter++;
   slideCounter++;
@@ -134,40 +134,78 @@ function getRealAnswers(quizObj) {
 }
 
 function calculateResults(userAnswers, realAnswers) {
-  var results = [],
-  score = 0,
-  i = 0,
-  len = userAnswers.length;
+  var score = 0,
+      i = 0,
+      len = userAnswers.length;
 
   for (i; i < len; i++) {
     var isCorrect = userAnswers[i] == realAnswers[i] ? true : false;
     if (isCorrect) {
       score++;
-      results.push(isCorrect);
-    } else {
-      results.push(isCorrect);
     }
   }
 
   return score;
 }
 
+function evaluateScore(score) {
+
+  var message = '';
+
+  switch(score) {
+    case 1:
+      message = "Sorry, but you're a dummy!";
+      break;
+    case 2:
+      message = "That was pretty pathetic.";
+      break;
+    case 3:
+    case 4:
+    case 5:
+      message = "You could've done better.";
+      break;
+    case 6:
+      message = "Good try! Try again?";
+      break;
+    case 7:
+      message = "Well done!";
+      break;
+    case 8:
+      message = "Great job!";
+      break;
+    case 9:
+      message = "Fantastic!";
+      break;
+    case 10:
+      message = "You're a genius!";
+      break;
+    default:
+      message = 'Well done!';
+  }
+  return message;
+
+}
+
 function resultsWindow(score, questions) {
   var modalOverlay = doc.querySelector('.modal-overlay'),
-    modalBody = doc.querySelector('.modal-body'),
-    closeBtn = doc.querySelector('.modal-close'),
-    scoreText = doc.createElement('h3'),
-    hideModal = function(evt) {
-      var e = evt || window.event;
-      e.preventDefault();
-      modalOverlay.className += ' modal-hidden';
-      window.location = '';
-    };
+      modalBody = doc.querySelector('.modal-body'),
+      closeBtn = doc.querySelector('.modal-close'),
+      scoreText = doc.createElement('h3'),
+      messageText = doc.createElement('p'),
+      message = evaluateScore(score),
+      hideModal = function(evt) {
+        var e = evt || window.event;
+        e.preventDefault();
+        modalOverlay.className += ' modal-hidden';
+        window.location = '';
+      };
   closeBtn.addEventListener('click', hideModal, false);
   modalOverlay.addEventListener('click', hideModal, false);
-  scoreText.className = 'score';
+  scoreText.className = 'modal-score';
   scoreText.innerHTML = score + ' out of ' + questions;
+  messageText.innerHTML = message;
   modalBody.appendChild(scoreText);
+  modalBody.appendChild(messageText);
   modalOverlay.classList.remove('modal-hidden');
 }
 
