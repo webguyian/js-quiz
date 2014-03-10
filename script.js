@@ -5,8 +5,10 @@ var $ = document.querySelector.bind(document),
     questionCounter = 1,
     slideCounter = 0,
     currentColor = 0,
+    currentAnimation = 0,
     givenAnswers = [],
-    colors = ['pink', 'yellow', 'orange', 'green', 'blue'];
+    colors = ['pink', 'yellow', 'orange', 'green', 'blue'],
+    animations = ['slideUp', 'slideLeft', 'slideDown'];
 
 function appendFields() {
   var content = doc.querySelector('.content'),
@@ -69,7 +71,8 @@ function initializeQuiz() {
 }
 
 function advanceSlide() {
-  currentColor++;
+  currentAnimation < 2 ? currentAnimation : currentAnimation = 0;
+  currentAnimation++;
   questionCounter++;
   slideCounter++;
 }
@@ -95,7 +98,7 @@ function nextQuestion() {
       slidePrevious();
       advanceSlide();
     } else {
-      alert('Please answer the question');
+      alert('Please answer the question.');
       validator = getAnswer(questionCounter);
     }
 
@@ -115,7 +118,7 @@ function slidePrevious() {
       prev_entry = entries[questionCounter - 1];
 
   prev_entry.addEventListener('AnimationEnd', removeHidden(this_entry), false);
-  prev_entry.classList.add('slideLeft');
+  prev_entry.classList.add(animations[currentAnimation]);
 }
 
 function removeHidden(elem) {

@@ -261,6 +261,42 @@ label {
   to { transform: translateX(-100%); }
 }
 
+.slideUp {
+  -webkit-animation: slideUp .6s ease both;
+  -moz-animation: slideUp .6s ease both;
+  animation: slideUp .6s ease both;
+}
+
+@-webkit-keyframes slideUp {
+  to { -webkit-transform: translateY(-100%); }
+}
+
+@-moz-keyframes slideUp {
+  to { -moz-transform: translateY(-100%); }
+}
+
+@keyframes slideUp {
+  to { transform: translateY(-100%); }
+}
+
+.slideDown {
+  -webkit-animation: slideDown .6s ease both;
+  -moz-animation: slideDown .6s ease both;
+  animation: slideDown .6s ease both;
+}
+
+@-webkit-keyframes slideDown {
+  to { -webkit-transform: translateY(100%); }
+}
+
+@-moz-keyframes slideDown {
+  to { -moz-transform: translateY(100%); }
+}
+
+@keyframes slideDown {
+  to { transform: translateY(100%); }
+}
+
 
 @media (min-width: 50em) {
 
